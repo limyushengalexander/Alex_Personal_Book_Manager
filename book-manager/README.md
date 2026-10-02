@@ -55,8 +55,6 @@ interfaces, scoring rules, and a complete traced workflow.
 
 I recorded a short terminal demo with my own narration.
 I put it at `demo.mp4` in this repository.
-I also created a repository creation, pushed to GitHub, and entered the repository
-URL in the class sheet; see [SETUP.md](SETUP.md).
 
 ## Scope
 
