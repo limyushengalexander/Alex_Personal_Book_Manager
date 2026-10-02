@@ -25,6 +25,17 @@ bash "$manage" status 2 finished >/dev/null
 bash "$manage" rating 2 4 >/dev/null
 bash "$manage" owned 2 yes >/dev/null
 assert_equal "$(bash "$db" search commas)" '2|A "book", with commas|An Author|||finished|4|yes'
+# Edits preserve reading fields and reject invalid changes without writing.
+bash "$manage" edit 2 'Corrected "book", with commas' 'New Author' fiction 2000 >/dev/null
+assert_equal "$(bash "$db" search commas)" '2|Corrected "book", with commas|New Author|fiction|2000|finished|4|yes'
+before=$(cat "$BOOK_DB")
+if bash "$manage" edit 2 ' thinking IN systems ' 'Donella H. Meadows' '' '' 2>/dev/null; then exit 1; fi
+if bash "$manage" edit 2 Title Author fiction bad 2>/dev/null; then exit 1; fi
+if bash "$manage" edit 2 '' Author '' '' 2>/dev/null; then exit 1; fi
+if bash "$manage" edit 99 Title Author '' '' 2>/dev/null; then exit 1; fi
+assert_equal "$(cat "$BOOK_DB")" "$before"
+bash "$manage" edit 2 'Corrected "book", with commas' 'New Author' '' '' >/dev/null
+assert_equal "$(bash "$db" search commas)" '2|Corrected "book", with commas|New Author|||finished|4|yes'
 candidates=$'Thinking in Systems|Donella H. Meadows|systems thinking|2008|99|history|Already saved\nNew Book|Author|logistics|2001|80|interests|First\nnew book|author|logistics|2001|70|history|Duplicate\nNew Discovery|Other|fiction|2000|45|discovery|Explore'
 result=$(printf '%s\n' "$candidates" | bash "$ROOT/recommendations/refine_recommendations.sh" 2)
 assert_equal "$result" $'New Book|Author|logistics|2001|80|interests|First\nNew Discovery|Other|fiction|2000|45|discovery|Explore'

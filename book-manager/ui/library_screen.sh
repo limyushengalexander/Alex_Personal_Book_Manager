@@ -31,8 +31,16 @@ IFS='|' read -r id title author genre year status rating owned <<< "$selected"
 gum style --border rounded --padding '1 2' "$title" "by $author" \
     "Genre: ${genre:-unknown}  Year: ${year:-unknown}" \
     "Status: $status  Rating: ${rating:-unrated}  Owned: $owned"
-action=$(gum choose 'Change status' 'Rate book' 'Change ownership' 'Back') || exit 0
+action=$(gum choose 'Edit book details' 'Change status' 'Rate book' 'Change ownership' 'Back') || exit 0
 case "$action" in
+    'Edit book details')
+        # Save only after all four prompts complete; Escape cancels the edit.
+        title=$(gum input --header 'Title' --value "$title") || exit 0
+        author=$(gum input --header 'Author' --value "$author") || exit 0
+        genre=$(gum input --header 'Genre (may be blank)' --value "$genre") || exit 0
+        year=$(gum input --header 'Year (four digits or blank)' --value "$year") || exit 0
+        record=$(bash "$workflow" edit "$id" "$title" "$author" "$genre" "$year")
+        printf 'Updated: %s\n' "$record" ;;
     'Change status')
         value=$(gum choose want-to-read reading finished) || exit 0
         bash "$workflow" status "$id" "$value" ;;

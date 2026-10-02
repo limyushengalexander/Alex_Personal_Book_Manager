@@ -42,7 +42,7 @@ def run():
     if not args:
         fail('use list, search TERM, exists TITLE AUTHOR, add, status ID VALUE, rating ID VALUE, owned ID VALUE.')
     command, *values = args
-    counts = {'list': 0, 'search': 1, 'exists': 2, 'add': 7, 'status': 2, 'rating': 2, 'owned': 2}
+    counts = {'list': 0, 'search': 1, 'exists': 2, 'add': 7, 'edit': 5, 'status': 2, 'rating': 2, 'owned': 2}
     if command not in counts or len(values) != counts[command]:
         fail('wrong command or arguments; see README.md.')
     rows = []
@@ -79,7 +79,13 @@ def run():
         row = next((r for r in rows if r['id'] == values[0]), None)
         if row is None:
             fail('book ID not found.')
-        row[command] = values[1]
+        if command == 'edit':
+            title, author, genre, year = (v.strip() for v in values[1:])
+            if any(r['id'] != row['id'] and key(r['title'], r['author']) == key(title, author) for r in rows):
+                fail('that title and author are already saved.')
+            row.update(title=title, author=author, genre=genre, year=year)
+        else:
+            row[command] = values[1]
         validate(row)
     # Replace only after a complete file has been written successfully.
     path.parent.mkdir(parents=True, exist_ok=True)

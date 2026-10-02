@@ -16,6 +16,6 @@ case "$action" in
         bash "$ROOT/data/book_database.sh" add "$title" "$author" "$genre" "$year" "$3" "$4" "$5"
         ;;
     search) exec bash "$ROOT/books/search_books.sh" "$@" ;;
-    list|status|rating|owned) exec bash "$ROOT/data/book_database.sh" "$action" "$@" ;;
-    *) echo 'Use add, list, search, status, rating or owned.' >&2; exit 2 ;;
+    list|edit|status|rating|owned) exec bash "$ROOT/data/book_database.sh" "$action" "$@" ;;
+    *) echo 'Use add, list, search, edit ID TITLE AUTHOR GENRE YEAR, status, rating or owned.' >&2; exit 2 ;;
 esac

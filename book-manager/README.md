@@ -21,6 +21,11 @@ My saved books stay in `data/books.csv`. The initial library is empty.
 
 ## Architecture
 
+To correct a book, browse or search, select it, and choose **Edit book details**.
+The title, author, genre, and year prompts start with saved values. Enter keeps
+a value; Escape cancels without saving. All four fields save together. Genre
+and year may be blank. Editing does not automatically look up metadata again.
+
 `app.sh` launches the Gum UI. The UI gathers input and calls workflows, which
 coordinate book components, recommendation components, and the data layer.
 Only `data/book_database.sh` opens `books.csv`. The recommendation workflow
