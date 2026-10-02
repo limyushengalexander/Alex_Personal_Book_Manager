@@ -24,7 +24,7 @@
 
 ## Data contracts
 
-Between programs, records use `|` as the delimiter and have no header:
+Between programs, the records use `|` as the delimiter and have no header:
 
 ```text
 Metadata:   title|author|genre|year
@@ -39,7 +39,7 @@ Statuses are `want-to-read`, `reading`, and `finished`; ownership is `yes`/`no`;
 ratings are blank or integers from 1 to 5. Error messages use stderr and failures
 return a nonzero exit code. `exists` returns 0 for found and 1 for absent.
 
-## Try the components directly
+## Trying the components directly
 
 Run from `book-manager/`:
 
@@ -55,7 +55,7 @@ bash books/fetch_book_metadata.sh "The Box" "Marc Levinson"
 bash workflows/get_recommendations.sh 5
 ```
 
-Use your actual book ID rather than assuming it is 1. Repeating the add command
+Use the actual book ID rather than assuming it is 1. Repeating the add command
 returns a duplicate error. `BOOK_DB=/absolute/path/books.csv` selects a different
 library; `BOOK_INTERESTS=/absolute/path/topics.txt` selects a different interests
 file. These overrides are also how tests stay separate from personal data.
@@ -111,6 +111,3 @@ Splitting CSV on commas in Bash would corrupt valid book titles containing
 commas. The database writes a temporary complete file and then replaces the
 old one; failed validation leaves the original untouched. It does not implement
 multi-writer locking. There is no delete action, login, cloud sync, or LLM call.
-
-Try explaining `&`, `$!`, `wait`, `|`, stdout versus stderr, and why only the
-database opens `books.csv`. Then trace Add Book through the same layers.

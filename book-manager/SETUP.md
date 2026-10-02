@@ -1,19 +1,21 @@
 # Setup and submission
 
+I did these steps below
+
 ## Windows: Git Bash
 
-1. Install Git for Windows if needed: https://git-scm.com/downloads/win
-2. Install Python 3 if needed: https://www.python.org/downloads/windows/
-   Enable its PATH option, and open a new Git Bash window.
-3. Install Gum in PowerShell:
+1. Installed Git for Windows: https://git-scm.com/downloads/win
+2. Installed Python 3: https://www.python.org/downloads/windows/
+   Enabled its PATH option, and open a new Git Bash window.
+3. Installed Gum in PowerShell:
 
    ```powershell
    winget install charmbracelet.gum
    ```
 
-   Close and reopen Git Bash so the PATH change takes effect.
+   Closed and reopened Git Bash so the PATH change takes effect.
    The official Gum instructions are at https://github.com/charmbracelet/gum.
-4. Extract the project ZIP. Open Git Bash in the extracted parent folder.
+4. Extracted the project ZIP. Open Git Bash in the extracted parent folder.
 
    ```bash
    cd book-manager
@@ -40,22 +42,22 @@ Run scripts with `bash`; there is no need to source them.
 
 ## macOS / Linux
 
-Install Gum using its official instructions and ensure `python3` is available.
+Installed Gum using its official instructions and ensured `python3` is available.
 On macOS with Homebrew, Gum's documented command is `brew install gum`.
-Then run `bash app.sh` from the project folder. No network is used at runtime.
+Ran `bash app.sh` from the project folder. No network is used at runtime.
 
-## Try three operations
+## Tried three operations
 
-1. Add **Thinking in Systems**, author **Donella H. Meadows**. Select a status
-   and ownership value that fit your actual situation. Its genre/year fill in.
-2. Browse or search for `systems`; choose the book to update its rating/status.
-3. Get recommendations; watch the three running/done messages, inspect a reason,
-   and save one suggestion to your want-to-read list.
+1. Added **Thinking in Systems**, author **Donella H. Meadows**. Selected a status
+   and ownership value that fit my actual situation. Its genre/year I filled in.
+2. Browsed/searched for `systems`; choose the book to update its rating/status.
+3. Got recommendations; watched the three running/done messages, inspected a reason,
+   and saved one suggestion to my want-to-read list.
 
-## Publish your finished assignment
+## Published my finished assignment
 
-Create an empty repository in your own GitHub account. In a parent folder
-containing only this `book-manager/` project, run:
+Created an empty repository in my own GitHub account. In a parent folder
+containing only this `book-manager/` project, I ran:
 
 ```bash
 git init
@@ -66,11 +68,11 @@ git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
 git push -u origin main
 ```
 
-Replace both placeholders with your repository details. Review `books.csv`
-before publishing: it contains the books you saved. Record your narrated demo,
-add the video or its working link to the README, then commit and push that
-change. Finally, enter your repository URL in the class sheet's
-**Assignment No 2** column. The sheet URL is in the assignment PDF.
+I replaced both placeholders with my repository details. Reviewed `books.csv`
+before publishing: it contained the books I saved. Recorded my narrated demo,
+added the video and its working link to README.md, then commit and pushed that
+change. Finally, I entered my repository URL in the class sheet's
+**Assignment No 2** column.
 
 ## Verification in the build environment
 

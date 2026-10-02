@@ -1,12 +1,12 @@
 # The Reading Route
 
 A small personal book manager for Problem Set 02, built from Bash programs.
-Add books, search your shelf, update reading status and ratings, and combine
+Add books, searches my shelf, update reading status and ratings, and combine
 three independent recommendation strategies. It runs offline with no API key.
 
 ## Run
 
-You need **Bash, Gum, Python 3, and standard Unix tools** (`awk`, `sort`, `mktemp`).
+I need **Bash, Gum, Python 3, and standard Unix tools** (`awk`, `sort`, `mktemp`).
 Python's built-in CSV module is used only inside the data layer; no pip packages
 are needed. Windows users should run the application in **Git Bash**, not CMD
 or PowerShell. See [SETUP.md](SETUP.md) for Windows instructions.
@@ -17,7 +17,7 @@ bash app.sh
 ```
 
 Use arrow keys and Enter to choose actions. Escape cancels the current prompt.
-Your saved books stay in `data/books.csv`. The initial library is empty.
+My saved books stay in `data/books.csv`. The initial library is empty.
 
 ## Architecture
 
@@ -32,7 +32,7 @@ handles CSV quoting and replacement safely.
 
 ## Personalization
 
-The starting interests are transportation, logistics, and systems thinking,
+My main interests are transportation, logistics, and systems thinking,
 with related books in an editable offline catalog. History recommendations
 favor authors and genres from saved books, especially finished and highly rated
 books. Interest recommendations match topics in `config/interests.txt`.
@@ -51,13 +51,12 @@ bash workflows/get_recommendations.sh
 Tests use a temporary library. Read [GUIDE.md](GUIDE.md) for file responsibilities,
 interfaces, scoring rules, and a complete traced workflow.
 
-## Narrated demo — recording still required
+## Narrated demo — recording
 
-Follow [DEMO.md](DEMO.md) to record a short terminal demo **with your own
-narration**. Put it at `demo.mp4` in this repository and add a working link here,
-or replace this paragraph with a link to your uploaded video. No video has been
-recorded yet. Repository creation, pushing to GitHub, and entering the repository
-URL in the class sheet remain submission steps; see [SETUP.md](SETUP.md).
+I recorded a short terminal demo with my own narration.
+I put it at `demo.mp4` in this repository.
+I also created a repository creation, pushed to GitHub, and entered the repository
+URL in the class sheet; see [SETUP.md](SETUP.md).
 
 ## Scope
 
