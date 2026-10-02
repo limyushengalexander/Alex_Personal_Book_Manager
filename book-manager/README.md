@@ -59,7 +59,7 @@ interfaces, scoring rules, and a complete traced workflow.
 ## Narrated demo — recording
 
 I recorded a short terminal demo with my own narration.
-I put it at `demo.mp4` in this repository.
+[Watch or download the narrated demo](../PS2%20Video.mp4).
 
 ## Scope
 
