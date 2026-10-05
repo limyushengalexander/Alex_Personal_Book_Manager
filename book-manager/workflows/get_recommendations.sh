@@ -5,7 +5,8 @@ ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 temporary=$(mktemp -d)
 pids=()
 cleanup() {
-    for pid in "${pids[@]}"; do kill "$pid" 2>/dev/null || true; done
+    # Bash 3.2 treats an empty array as unset under set -u. Expand only if set.
+    for pid in ${pids[@]+"${pids[@]}"}; do kill "$pid" 2>/dev/null || true; done
     rm -rf "$temporary"
 }
 trap cleanup EXIT

@@ -1,0 +1,19 @@
+name: Bash compatibility
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  macos-bash-32:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test using macOS Bash 3.2, including child scripts
+        shell: /bin/bash --noprofile --norc -eo pipefail {0}
+        run: |
+          /bin/bash --version
+          [[ $BASH_VERSION == 3.2.* ]]
+          # Application scripts invoke "bash" themselves: keep those on 3.2 too.
+          mkdir -p "$RUNNER_TEMP/bash32-bin"
+          ln -s /bin/bash "$RUNNER_TEMP/bash32-bin/bash"
+          export PATH="$RUNNER_TEMP/bash32-bin:$PATH"
+          python3 --version
+          bash book-manager/tests/smoke.sh
+          bash book-manager/tests/recommendations_screen.sh

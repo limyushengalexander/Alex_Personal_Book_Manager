@@ -76,6 +76,12 @@ change. Finally, I entered my repository URL in the class sheet's
 
 ## Verification in the build environment
 
+The macOS CI job in `.github/workflows/bash-compatibility.yml` uses `/bin/bash`
+and verifies version 3.2, including child scripts. It runs the core smoke tests
+and `bash tests/recommendations_screen.sh`, which checks displaying and saving
+recommendations with empty and populated libraries using scripted Gum choices.
+This checks screen control flow; actual Gum appearance still needs a terminal.
+
 - Bash syntax and temporary-database integration tests: passed.
 - CSV commas/quotes, duplicate prevention, updates, empty library, metadata,
   piped search, ranking, deduplication, saved-book exclusion: tested.
